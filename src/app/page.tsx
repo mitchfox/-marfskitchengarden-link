@@ -17,7 +17,6 @@ import Book2 from '../images/photos/book_img_2.webp'
 import { TbBook, TbHeadphones } from "react-icons/tb";
 import { FaGlobe } from 'react-icons/fa'
 
-
 const satisfy = Satisfy({
   subsets: ['latin'],
   weight: '400',
@@ -50,7 +49,7 @@ function SocialLink({
       target="_blank"
       rel="noopener noreferrer"
     >
-      <Icon className="h-6 w-6 fill-white transition group-hover:fill-white/80" />
+      <Icon className="h-6 w-6 fill-emerald-700 transition group-hover:fill-emerald-600" />
     </Link>
   )
 }
@@ -72,11 +71,11 @@ function LinkBox({
     <a
       href={href}
       target="_blank"
-      className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/10 p-2 backdrop-blur-sm transition-colors hover:bg-white/20"
+      className="flex items-center justify-between rounded-2xl border border-emerald-100 bg-white p-2 shadow-sm transition-all hover:border-emerald-200 hover:bg-emerald-50 hover:shadow-md"
     >
       <div className="flex flex-1 items-center gap-4">
         {image ? (
-          <div className="aspect-square h-12 w-12 min-w-[3rem] overflow-hidden rounded-xl">
+          <div className="aspect-square h-12 w-12 min-w-[3rem] overflow-hidden rounded-xl border border-emerald-100">
             <img
               src={image}
               alt=""
@@ -86,20 +85,20 @@ function LinkBox({
           </div>
         ) : (
           Icon && (
-            <div className="flex aspect-square h-12 w-12 min-w-[3rem] items-center justify-center rounded-xl bg-white/5 p-2">
-              <Icon className="h-6 w-6 text-white" />
+            <div className="flex aspect-square h-12 w-12 min-w-[3rem] items-center justify-center rounded-xl bg-emerald-100 p-2">
+              <Icon className="h-6 w-6 text-emerald-700" />
             </div>
           )
         )}
         <div className="text-left">
-          <h2 className="pr-6 text-xs font-medium text-white">{title}</h2>
+          <h2 className="pr-6 text-xs font-medium text-emerald-900">{title}</h2>
           {description && (
-            <p className="mt-0.5 text-xs text-white/80">{description}</p>
+            <p className="mt-0.5 text-xs text-emerald-700">{description}</p>
           )}
         </div>
       </div>
       <svg
-        className="h-4 w-4 flex-shrink-0 text-white/70"
+        className="h-4 w-4 flex-shrink-0 text-emerald-400"
         fill="none"
         viewBox="0 0 24 24"
         strokeWidth="1.5"
@@ -248,38 +247,37 @@ export default function Home() {
 
   return (
     <>
-      <Container className="flex-1 bg-zinc-950 pb-32">
+      <Container className="flex-1 bg-gradient-to-b from-emerald-50 to-emerald-100 pb-32">
         <div className="mx-auto max-w-lg text-center">
           <div className="relative w-full">
             <div className="relative">
               <div
-                className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-[30dvh] bg-gradient-to-b from-transparent via-transparent to-zinc-950 sm:hidden"
+                className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-[30dvh] sm:hidden"
                 style={{
                   background:
-                    'linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 50%, rgba(0, 0, 0, 0.95) 75%, #000000 100%)',
+                    'linear-gradient(to bottom, rgba(240, 253, 244, 0) 0%, rgba(240, 253, 244, 0.8) 50%, rgba(240, 253, 244, 0.95) 75%, rgba(240, 253, 244, 1) 100%)',
                 }}
               />
               <div className="mx-auto h-[40dvh] sm:mt-12 sm:h-48 sm:w-40 md:h-72 md:w-64">
                 <img
                   src={Marf_Image.src}
-                  alt="Kimberly"
-                  className="h-full w-full object-cover object-top sm:rounded-3xl"
+                  alt="Marf's Kitchen Garden"
+                  className="h-full w-full object-cover object-top sm:rounded-3xl shadow-md"
                 />
               </div>
             </div>
 
             <div className="relative z-30">
               <h1
-                className={`${satisfy.className} -mt-16 mb-4 text-4xl leading-none text-white sm:mt-6 sm:text-5xl`}
+                className={`${satisfy.className} -mt-16 mb-4 text-4xl leading-none text-emerald-800 sm:mt-6 sm:text-5xl`}
               >
                 Marf's Kitchen Garden
               </h1>
-              <p className="mb-8 px-6 text-sm text-white/80">
+              <p className="mb-8 px-6 text-sm text-emerald-700">
                 Easy gardening projects and recipes
               </p>
 
               <div className="mb-12 flex justify-center gap-6">
-                {/* <SocialLink href="#" aria-label="Follow on X" icon={XIcon} /> */}
                 {socialLinks.map(({ href, icon: Icon }) => (
                   <SocialLink key={href} href={href} icon={Icon} />
                 ))}
@@ -298,9 +296,9 @@ export default function Home() {
                 ))}
               </div>
               <div className="space-y-4 px-4 mt-8">
-                <p className="mb-8 px-6 text-sm text-white/80 font-bold">
-                ORDER MY BOOK ☺️
-              </p>
+                <p className="mb-8 px-6 text-sm text-emerald-700 font-bold">
+                  ORDER MY BOOK ☺️
+                </p>
                 {bookLinksData.map(({ title, description, href, image, icon }) => (
                   <LinkBox
                     key={title}
