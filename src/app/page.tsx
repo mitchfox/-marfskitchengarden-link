@@ -261,7 +261,7 @@ export default function Home() {
               <div className="mx-auto h-[40dvh] sm:mt-12 sm:h-48 sm:w-40 md:h-72 md:w-64">
                 <img
                   src={Marf_Image.src}
-                  alt="Marf's Kitchen Garden"
+                  alt="Marfs Kitchen Garden"
                   className="h-full w-full object-cover object-top sm:rounded-3xl shadow-md"
                 />
               </div>
@@ -271,7 +271,7 @@ export default function Home() {
               <h1
                 className={`${satisfy.className} -mt-16 mb-4 text-4xl leading-none text-emerald-800 sm:mt-6 sm:text-5xl`}
               >
-                Marf's Kitchen Garden
+                {"Marf's Kitchen Garden"}
               </h1>
               <p className="mb-8 px-6 text-sm text-emerald-700">
                 Easy gardening projects and recipes
