@@ -8,16 +8,16 @@ import {
   YouTubeIcon,
   FacebookIcon,
 } from '@/components/SocialIcons'
-import { Satisfy } from 'next/font/google'
+import { DynaPuff } from 'next/font/google'
 import { FreeTrialBanner } from '@/components/FreeTrial'
 import WithMeLogo from '@/images/photos/withmelogo.png'
-import Marf_Image from '../images/photos/marf_image.webp'
+import Marf_Image from '../images/photos/marf_image.jpg'
 import Book1 from '../images/photos/book_img_1.webp'
 import Book2 from '../images/photos/book_img_2.webp'
 import { TbBook, TbHeadphones } from "react-icons/tb";
 import { FaGlobe } from 'react-icons/fa'
 
-const satisfy = Satisfy({
+const dynaPuff = DynaPuff({
   subsets: ['latin'],
   weight: '400',
   display: 'swap',
@@ -71,7 +71,7 @@ function LinkBox({
     <a
       href={href}
       target="_blank"
-      className="flex items-center justify-between rounded-2xl border border-emerald-100 bg-white p-2 shadow-sm transition-all hover:border-emerald-200 hover:bg-emerald-50 hover:shadow-md"
+      className="flex items-center justify-between rounded-2xl border border-emerald-100 bg-white p-2 shadow-xs transition-all hover:border-emerald-200 hover:scale-105"
     >
       <div className="flex flex-1 items-center gap-4">
         {image ? (
@@ -247,33 +247,36 @@ export default function Home() {
 
   return (
     <>
-      <Container className="flex-1 bg-gradient-to-b from-emerald-50 to-emerald-100 pb-32">
+      <Container className="flex-1 bg-gradient-to-b from-[#E5FCF0] to-[#E5FCF0] pb-32">
         <div className="mx-auto max-w-lg text-center">
           <div className="relative w-full">
             <div className="relative">
               <div
                 className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-[30dvh] sm:hidden"
                 style={{
+                  marginBottom: '-1px',
                   background:
-                    'linear-gradient(to bottom, rgba(240, 253, 244, 0) 0%, rgba(240, 253, 244, 0.8) 50%, rgba(240, 253, 244, 0.95) 75%, rgba(240, 253, 244, 1) 100%)',
+                  
+                    'linear-gradient(to bottom, rgba(229, 252, 240, 0) 0%, rgba(229, 252, 240, 0.8) 50%, rgba(229, 252, 240, 0.95) 75%, rgba(229, 252, 240, 1) 100%)',
                 }}
               />
-              <div className="mx-auto h-[40dvh] sm:mt-12 sm:h-48 sm:w-40 md:h-72 md:w-64">
+              <div className="mx-auto h-[45dvh] min-h-[350px] sm:mt-12 sm:h-48 sm:w-40 md:h-72 md:w-64">
                 <img
                   src={Marf_Image.src}
+                  style={{ objectFit: 'cover', objectPosition: 'center' }}
                   alt="Marfs Kitchen Garden"
-                  className="h-full w-full object-cover object-top sm:rounded-3xl shadow-md"
+                  className="h-full w-full object-cover object-top sm:rounded-3xl"
                 />
               </div>
             </div>
 
             <div className="relative z-30">
               <h1
-                className={`${satisfy.className} -mt-16 mb-4 text-4xl leading-none text-emerald-800 sm:mt-6 sm:text-5xl`}
+                className={`${dynaPuff.className} -mt-16 mb-4 text-3xl leading-none text-emerald-800 sm:mt-6 sm:text-4xl`}
               >
                 {"Marf's Kitchen Garden"}
               </h1>
-              <p className="mb-8 px-6 text-sm text-emerald-700">
+              <p className="mb-8 px-6 text-sm font-medium text-emerald-700">
                 Easy gardening projects and recipes
               </p>
 
@@ -283,7 +286,7 @@ export default function Home() {
                 ))}
               </div>
 
-              <div className="space-y-4 px-4">
+              <div className="space-y-4 px-6">
                 {linksData.map(({ title, description, href, image, icon }) => (
                   <LinkBox
                     key={title}
@@ -295,10 +298,12 @@ export default function Home() {
                   />
                 ))}
               </div>
-              <div className="space-y-4 px-4 mt-8">
-                <p className="mb-8 px-6 text-sm text-emerald-700 font-bold">
-                  ORDER MY BOOK ☺️
-                </p>
+              <div className="space-y-4 px-6 mt-8">
+                <div className="flex justify-center">
+                  <p className={`${dynaPuff.className} px-4 py-2 text-md text-emerald-700 font-bold rounded-full`}>
+                    Order My Book ☺️
+                  </p>
+                </div>
                 {bookLinksData.map(({ title, description, href, image, icon }) => (
                   <LinkBox
                     key={title}
