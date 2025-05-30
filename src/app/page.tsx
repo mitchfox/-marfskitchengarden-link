@@ -16,6 +16,8 @@ import Book1 from '../images/photos/book_img_1.webp'
 import Book2 from '../images/photos/book_img_2.webp'
 import { TbBook, TbHeadphones } from "react-icons/tb";
 import { FaGlobe } from 'react-icons/fa'
+import recipes from '../images/photos/recipes.jpg'
+import projects from '../images/photos/projects.jpg'
 
 const dynaPuff = DynaPuff({
   subsets: ['latin'],
@@ -91,7 +93,7 @@ function LinkBox({
           )
         )}
         <div className="text-left">
-          <h2 className="pr-6 text-xs font-medium text-emerald-900">{title}</h2>
+          <h2 className="pr-6 text-xs text-emerald-900 font-bold" style={{ lineHeight: '1.5' }}>{title}</h2>
           {description && (
             <p className="mt-0.5 text-xs text-emerald-700">{description}</p>
           )}
@@ -111,6 +113,59 @@ function LinkBox({
         />
       </svg>
     </a>
+  )
+}
+
+function ElongatedBlob({ className = '', variant = 'a', ...props }: { className?: string, variant?: 'a' | 'b' | 'c' | 'd' }) {
+  const blobStyles = {
+    a: {
+      borderRadius: '90% 10% 90% 10% / 30% 70% 30% 70%',
+      width: '28rem',
+      height: '10rem',
+      '--translate-x': '60px',
+      '--translate-y': '-40px',
+      '--scale': '1.3',
+      '--duration': '12s',
+    },
+    b: {
+      borderRadius: '20% 80% 20% 80% / 65% 35% 65% 35%',
+      width: '25rem',
+      height: '9rem',
+      '--translate-x': '-50px',
+      '--translate-y': '30px',
+      '--scale': '1.4',
+      '--duration': '15s',
+    },
+    c: {
+      borderRadius: '70% 30% 70% 30% / 40% 60% 40% 60%',
+      width: '30rem',
+      height: '11rem',
+      '--translate-x': '70px',
+      '--translate-y': '-35px',
+      '--scale': '1.25',
+      '--duration': '10s',
+    },
+    d: {
+      borderRadius: '70% 30% 70% 30% / 40% 60% 40% 60%',
+      width: '26rem',
+      height: '10rem',
+      '--translate-x': '-65px',
+      '--translate-y': '45px',
+      '--scale': '1.35',
+      '--duration': '13s',
+    },
+  }
+
+  return (
+    <div
+      className={`absolute mix-blend-multiply filter blur-[60px] opacity-40 animate-float ${className}`}
+      style={{
+        backgroundColor: '#FF00AA',
+        animation: `float var(--duration) cubic-bezier(0.4, 0, 0.6, 1) infinite`,
+        ...blobStyles[variant]
+      }}
+      {...props}
+    />
   )
 }
 
@@ -136,7 +191,7 @@ export default function Home() {
 
   const linksData = [
     {
-      title: 'Give a grow - Book info',
+      title: 'GIVE A GROW - BOOK INFO',
       description: '',
       href: 'https://www.penguin.co.uk/books/463153/give-it-a-grow-by-swales-martha/9780241710364',
       image: null,
@@ -155,6 +210,20 @@ export default function Home() {
       href: 'https://www.withme.so/MarfsKitchenGarden',
       image: WithMeLogo,
       icon: null,
+    },
+    {
+      title: 'ALL MY SMALL GARDEN PROJECTS',
+      description: '',
+      href: 'https://www.withme.so/MarfsKitchenGarden?open_collection=true&id=2754',
+      image: projects,
+      icon: FaGlobe,
+    },
+    {
+      title: 'RECIPES FROM MY GARDEN',
+      description: '',
+      href: 'https://www.withme.so/MarfsKitchenGarden?open_collection=true&id=2758',
+      image: recipes,
+      icon: FaGlobe,
     },
     {
       title: 'WORK WITH ME ',
@@ -247,8 +316,27 @@ export default function Home() {
 
   return (
     <>
-      <Container className="flex-1 bg-gradient-to-b from-[#E5FCF0] to-[#E5FCF0] pb-32">
-        <div className="mx-auto max-w-lg text-center">
+      <Container className="flex-1 min-w-screen w-full bg-gradient-to-b from-[#E5FCF0] to-[#E5FCF0] relative max-w-none">
+        <style jsx global>{`
+          @keyframes float {
+            0%, 100% {
+              transform: translate(0, 0) scale(1) rotate(0deg);
+            }
+            33% {
+              transform: translate(var(--translate-x), var(--translate-y)) scale(var(--scale)) rotate(5deg);
+            }
+            66% {
+              transform: translate(calc(var(--translate-x) * -0.5), calc(var(--translate-y) * -0.5)) scale(calc(var(--scale) * 0.9)) rotate(-3deg);
+            }
+          }
+        `}</style>
+        <div className="absolute inset-0 overflow-hidden">
+          <ElongatedBlob variant="a" className="absolute left-[-15%] top-[700px] rotate-45 sm:left-[-10%]" />
+          <ElongatedBlob variant="b" className="absolute right-[-15%] top-[1100px] -rotate-30 sm:right-[-5%]" />
+          <ElongatedBlob variant="c" className="absolute left-[-5%] top-[1600px] rotate-145 sm:left-[10%]" />
+          <ElongatedBlob variant="d" className="absolute right-[-10%] top-[2100px] rotate-15 sm:right-[45%]" />
+        </div>
+        <div className="mx-auto w-full max-w-lg text-center relative z-[1] pb-32 ">
           <div className="relative w-full">
             <div className="relative">
               <div
@@ -263,7 +351,7 @@ export default function Home() {
               <div className="mx-auto h-[45dvh] min-h-[350px] sm:mt-12 sm:h-48 sm:w-40 md:h-72 md:w-64">
                 <img
                   src={Marf_Image.src}
-                  style={{ objectFit: 'cover', objectPosition: 'center' }}
+                  style={{ objectFit: 'cover', objectPosition: 'center', }}
                   alt="Marfs Kitchen Garden"
                   className="h-full w-full object-cover object-top sm:rounded-3xl"
                 />
@@ -272,7 +360,7 @@ export default function Home() {
 
             <div className="relative z-30">
               <h1
-                className={`${dynaPuff.className} -mt-16 mb-4 text-3xl leading-none text-emerald-800 sm:mt-6 sm:text-4xl`}
+                className={`${dynaPuff.className} -mt-16 mb-2 text-3xl leading-none text-emerald-800 sm:mt-6 sm:text-3xl`}
               >
                 {"Marf's Kitchen Garden"}
               </h1>
@@ -300,7 +388,7 @@ export default function Home() {
               </div>
               <div className="space-y-4 px-6 mt-8">
                 <div className="flex justify-center">
-                  <p className={`${dynaPuff.className} px-4 py-2 text-md text-emerald-700 font-bold rounded-full`}>
+                  <p className={`${dynaPuff.className} px-4 py-2 text-md text-emerald-700 font-extrabold rounded-full`}>
                     Order My Book ☺️
                   </p>
                 </div>
